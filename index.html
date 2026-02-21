@@ -1539,6 +1539,73 @@
             font-weight: 800;
             font-size: 12px;
         }
+
+        /* ── Responsive: Mobile fills full screen, PC keeps phone frame ── */
+
+        /* ── Mobile (real device) — fill the entire viewport ── */
+        @media (max-width: 480px) {
+            body {
+                background: var(--bg);
+                align-items: flex-start;
+                height: 100dvh;
+                overflow: hidden;
+            }
+
+            .app-container {
+                width: 100vw;
+                height: 100dvh;
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            /* occupancy card — slightly tighter numbers on small screens */
+            .occ-count-num {
+                font-size: 19px;
+            }
+
+            .occ-summary-card {
+                margin: 10px 10px 4px;
+                padding: 12px 13px 10px;
+            }
+
+            /* bus list cards edge-to-edge */
+            .bus-item {
+                border-radius: 12px;
+            }
+
+            /* route timeline full width */
+            .rt-timeline {
+                padding: 10px 10px 80px;
+            }
+        }
+
+        /* ── Tablet / small desktop — keep phone frame but scale to viewport ── */
+        @media (min-width: 481px) and (max-width: 800px) {
+            .app-container {
+                width: min(370px, 96vw);
+                height: min(720px, 96vh);
+            }
+        }
+
+        /* ── Large desktop — unchanged phone frame + dark surround ── */
+        @media (min-width: 801px) {
+            .app-container {
+                width: 370px;
+                height: 720px;
+            }
+        }
+
+        /* Safe area for notched iPhones */
+        @supports (padding-top: env(safe-area-inset-top)) {
+            @media (max-width: 480px) {
+                .app-container {
+                    padding-top: env(safe-area-inset-top);
+                    padding-bottom: env(safe-area-inset-bottom);
+                    height: 100vh;
+                }
+            }
+        }
     </style>
 </head>
 
