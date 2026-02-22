@@ -1606,6 +1606,160 @@
                 }
             }
         }
+
+        /* ── Drop-Off Forecast Panel ─────────────────────────── */
+        .dof-header-card {
+            margin: 12px 14px 8px;
+            background: linear-gradient(135deg, #0f4c2a 0%, #16a34a 100%);
+            border-radius: 14px;
+            padding: 13px 15px 11px;
+            color: white;
+        }
+
+        .dof-header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 7px;
+        }
+
+        .dof-header-title {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .dof-etm-icon {
+            font-size: 16px;
+        }
+
+        .dof-etm-badge {
+            background: rgba(255, 255, 255, 0.2);
+            color: #d1fae5;
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            padding: 2px 7px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+        }
+
+        .dof-header-desc {
+            font-size: 11px;
+            opacity: 0.85;
+            line-height: 1.45;
+        }
+
+        /* Per-stop row */
+        .dof-stop-row {
+            margin: 0 14px 8px;
+            background: white;
+            border-radius: 12px;
+            padding: 11px 13px;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+        }
+
+        .dof-stop-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 7px;
+        }
+
+        .dof-stop-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .dof-stop-eta {
+            font-size: 11px;
+            color: #94a3b8;
+            font-weight: 600;
+        }
+
+        .dof-stop-bottom {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dof-bar-wrap {
+            flex: 1;
+            background: #f1f5f9;
+            border-radius: 6px;
+            height: 8px;
+            overflow: hidden;
+        }
+
+        .dof-bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.6s ease;
+        }
+
+        .dof-bar-high {
+            background: linear-gradient(90deg, #f87171, #ef4444);
+        }
+
+        .dof-bar-med {
+            background: linear-gradient(90deg, #fbbf24, #f59e0b);
+        }
+
+        .dof-bar-low {
+            background: linear-gradient(90deg, #4ade80, #16a34a);
+        }
+
+        .dof-count-badge {
+            min-width: 38px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 900;
+            padding: 3px 8px;
+            border-radius: 20px;
+        }
+
+        .dof-badge-high {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .dof-badge-med {
+            background: #fef9c3;
+            color: #92400e;
+        }
+
+        .dof-badge-low {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .dof-label-text {
+            font-size: 10px;
+            color: #94a3b8;
+            font-weight: 600;
+        }
+
+        /* Footer context bar */
+        .dof-footer {
+            margin: 4px 14px 80px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 9px 13px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #64748b;
+            gap: 6px;
+        }
+
+        .dof-footer strong {
+            color: #1e293b;
+        }
     </style>
 </head>
 
@@ -1941,6 +2095,7 @@
             <!-- Tabs -->
             <div class="rt-tabs">
                 <div class="rt-tab active" id="tab-fullroute" onclick="switchRTTab('fullroute')">Full Route</div>
+                <div class="rt-tab" id="tab-dropoff" onclick="switchRTTab('dropoff')">Drop-Off</div>
                 <div class="rt-tab" id="tab-businfo" onclick="switchRTTab('businfo')">Bus Info</div>
             </div>
 
@@ -2020,27 +2175,6 @@
                                 <span class="occ-detail-val" style="color:#2563eb;" id="occ-d-eta">~8 min</span>
                             </div>
                         </div>
-                        <div class="occ-detail-section" style="margin-top:10px;">
-                            <div
-                                style="font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:1px;margin-bottom:6px;">
-                                📍 DROP-OFF FORECAST</div>
-                            <div class="occ-detail-row">
-                                <span>Veltech Univ. (Avadi)</span>
-                                <span class="stop-badge badge-high">18</span>
-                            </div>
-                            <div class="occ-detail-row">
-                                <span>Avadi Bus Stand</span>
-                                <span class="stop-badge badge-med">9</span>
-                            </div>
-                            <div class="occ-detail-row">
-                                <span>Ambattur</span>
-                                <span class="stop-badge badge-low">4</span>
-                            </div>
-                            <div class="occ-detail-row">
-                                <span>Mogappair</span>
-                                <span class="stop-badge badge-low">3</span>
-                            </div>
-                        </div>
                         <div style="font-size:10px;color:#94a3b8;text-align:center;margin-top:8px;">Data: ETM + GPS +
                             YOLO AI &nbsp;·&nbsp; Last updated: <span id="occ-d-updated">Just now</span></div>
                     </div>
@@ -2048,6 +2182,33 @@
 
                 <div class="rt-timeline" id="rt-timeline-stops">
                     <!-- Dynamically generated -->
+                </div>
+            </div>
+
+            <!-- DROP-OFF FORECAST panel -->
+            <div class="rt-panel" id="panel-dropoff">
+                <!-- ETM Source Header -->
+                <div class="dof-header-card">
+                    <div class="dof-header-top">
+                        <div class="dof-header-title">
+                            <span class="dof-etm-icon">🎫</span>
+                            <span>Drop-Off Forecast</span>
+                            <span class="dof-etm-badge">ETM-Derived</span>
+                        </div>
+                        <span class="occ-dot live-dot"></span>
+                    </div>
+                    <p class="dof-header-desc">Passengers expected to alight at each upcoming stop, calculated from
+                        active ETM ticket destinations on this bus.</p>
+                </div>
+
+                <!-- Per-stop rows — dynamically rendered -->
+                <div id="dof-stop-list"></div>
+
+                <!-- Occupancy context footer -->
+                <div class="dof-footer">
+                    <span>Current onboard: <strong id="dof-total-onboard">—</strong></span>
+                    <span style="color:#94a3b8;">·</span>
+                    <span>After next stop: <strong id="dof-after-next" style="color:#16a34a;">—</strong></span>
                 </div>
             </div>
 
@@ -2088,10 +2249,6 @@
                     </div>
                 </div>
                 <div class="rt-info-card" style="margin-top:12px;">
-                    <div class="rt-info-row">
-                        <span class="rt-info-label">Data Source</span>
-                        <span class="rt-info-val" style="font-size:11px;">ETM + GPS + YOLO AI</span>
-                    </div>
                     <div class="rt-info-row">
                         <span class="rt-info-label">Last Updated</span>
                         <span class="rt-info-val" id="info-lastupdate" style="font-size:11px;">Just now</span>
@@ -2175,11 +2332,56 @@
         ];
 
         const busData = [
-            { plate: 'TN-01-V-2026', time: '08:00 AM', eta: '2 mins', occ: 42, emp: 8, std: 12, startIdx: 9 },
-            { plate: 'TN-01-V-2027', time: '08:15 AM', eta: '7 mins', occ: 20, emp: 30, std: 0, startIdx: 6 },
-            { plate: 'TN-01-V-2028', time: '08:30 AM', eta: '15 mins', occ: 50, emp: 0, std: 25, startIdx: 4 },
-            { plate: 'TN-01-V-2029', time: '08:45 AM', eta: '22 mins', occ: 15, emp: 35, std: 0, startIdx: 2 },
-            { plate: 'TN-01-V-2030', time: '09:00 AM', eta: '30 mins', occ: 30, emp: 20, std: 5, startIdx: 0 }
+            {
+                plate: 'TN-01-V-2026', time: '08:00 AM', eta: '2 mins', occ: 42, emp: 8, std: 12, startIdx: 9,
+                dropoffs: [
+                    { stop: 'Thirumullaivoyal', eta: '2 min', count: 8 },
+                    { stop: 'Mogappair', eta: '10 min', count: 11 },
+                    { stop: 'Ambattur', eta: '19 min', count: 6 },
+                    { stop: 'Anna Nagar', eta: '32 min', count: 9 },
+                    { stop: 'Koyambedu', eta: '44 min', count: 5 },
+                    { stop: 'Chennai Central', eta: '57 min', count: 3 }
+                ]
+            },
+            {
+                plate: 'TN-01-V-2027', time: '08:15 AM', eta: '7 mins', occ: 20, emp: 30, std: 0, startIdx: 6,
+                dropoffs: [
+                    { stop: 'Mogappair', eta: '7 min', count: 5 },
+                    { stop: 'Ambattur', eta: '16 min', count: 7 },
+                    { stop: 'Anna Nagar', eta: '28 min', count: 4 },
+                    { stop: 'Koyambedu', eta: '40 min', count: 3 },
+                    { stop: 'Chennai Central', eta: '55 min', count: 1 }
+                ]
+            },
+            {
+                plate: 'TN-01-V-2028', time: '08:30 AM', eta: '15 mins', occ: 50, emp: 0, std: 25, startIdx: 4,
+                dropoffs: [
+                    { stop: 'Ambattur', eta: '15 min', count: 18 },
+                    { stop: 'Anna Nagar', eta: '26 min', count: 14 },
+                    { stop: 'Koyambedu', eta: '37 min', count: 10 },
+                    { stop: 'Arumbakkam', eta: '45 min', count: 5 },
+                    { stop: 'Chennai Central', eta: '62 min', count: 3 }
+                ]
+            },
+            {
+                plate: 'TN-01-V-2029', time: '08:45 AM', eta: '22 mins', occ: 15, emp: 35, std: 0, startIdx: 2,
+                dropoffs: [
+                    { stop: 'Avadi Bus Stand', eta: '22 min', count: 4 },
+                    { stop: 'Thirumullaivoyal', eta: '30 min', count: 5 },
+                    { stop: 'Ambattur', eta: '42 min', count: 4 },
+                    { stop: 'Chennai Central', eta: '70 min', count: 2 }
+                ]
+            },
+            {
+                plate: 'TN-01-V-2030', time: '09:00 AM', eta: '30 mins', occ: 30, emp: 20, std: 5, startIdx: 0,
+                dropoffs: [
+                    { stop: 'Veltech Univ. (Avadi)', eta: '30 min', count: 9 },
+                    { stop: 'Avadi Bus Stand', eta: '38 min', count: 8 },
+                    { stop: 'Thirumullaivoyal', eta: '46 min', count: 6 },
+                    { stop: 'Ambattur', eta: '57 min', count: 4 },
+                    { stop: 'Chennai Central', eta: '80 min', count: 3 }
+                ]
+            }
         ];
 
         // Splash → Auth
@@ -2404,6 +2606,43 @@
             });
         }
 
+        function renderDropoffPanel(bus) {
+            const list = document.getElementById('dof-stop-list');
+            list.innerHTML = '';
+            const dropoffs = bus.dropoffs || [];
+            if (!dropoffs.length) {
+                list.innerHTML = '<p style="text-align:center;color:#94a3b8;font-size:13px;padding:20px;">No drop-off data available for this bus.</p>';
+                return;
+            }
+            // Max count for bar scaling
+            const maxCount = Math.max(...dropoffs.map(d => d.count));
+            dropoffs.forEach(d => {
+                const pct = Math.round(d.count / maxCount * 100);
+                let tier = pct >= 70 ? 'high' : pct >= 35 ? 'med' : 'low';
+                list.insertAdjacentHTML('beforeend', `
+                    <div class="dof-stop-row">
+                        <div class="dof-stop-top">
+                            <span class="dof-stop-name">📍 ${d.stop}</span>
+                            <span class="dof-stop-eta">ETA ${d.eta}</span>
+                        </div>
+                        <div class="dof-stop-bottom">
+                            <div class="dof-bar-wrap">
+                                <div class="dof-bar-fill dof-bar-${tier}" style="width:${pct}%"></div>
+                            </div>
+                            <span class="dof-count-badge dof-badge-${tier}">${d.count} pax</span>
+                        </div>
+                        <div style="margin-top:5px;">
+                            <span class="dof-label-text">ETM tickets with destination: ${d.stop}</span>
+                        </div>
+                    </div>`);
+            });
+            // Update footer context
+            const totalOnboard = bus.occ + bus.std;
+            const afterNext = Math.max(0, totalOnboard - (dropoffs[0]?.count || 0));
+            document.getElementById('dof-total-onboard').textContent = totalOnboard;
+            document.getElementById('dof-after-next').textContent = afterNext;
+        }
+
         function openRouteTracking(plate) {
             const bus = busData.find(b => b.plate === plate) || busData[0];
             // Populate header
@@ -2438,6 +2677,9 @@
             const splashImg = document.querySelector('#splash-screen img');
             if (splashImg) document.getElementById('rt-logo-img').src = splashImg.src;
 
+            // Render drop-off panel
+            renderDropoffPanel(bus);
+
             // Reset tab to Full Route
             switchRTTab('fullroute');
             renderRouteTimeline(bus);
@@ -2446,7 +2688,7 @@
         }
 
         function switchRTTab(tab) {
-            ['fullroute', 'businfo'].forEach(t => {
+            ['fullroute', 'dropoff', 'businfo'].forEach(t => {
                 document.getElementById('tab-' + t).classList.toggle('active', t === tab);
                 document.getElementById('panel-' + t).classList.toggle('active', t === tab);
             });
